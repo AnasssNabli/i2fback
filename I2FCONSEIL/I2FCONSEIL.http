@@ -1,0 +1,6 @@
+@I2FCONSEIL_HostAddress = http://localhost:5188
+
+GET {{I2FCONSEIL_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

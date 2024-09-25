@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\I2FCONSEIL.props" />
+</Project>
