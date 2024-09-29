@@ -40,32 +40,51 @@ namespace I2FCONSEIL.Controllers
 
             return Ok(financiers);
         }
+        [HttpGet("getfinancier/{id}")]
+        public async Task<IActionResult> GetFinancier(int id)
+        {
+            // Fetch the financier records for the given user ID
+            var financiers = await _context.Financiers
+                .Where(f => f.Id_User == id)
+                .ToListAsync();
 
-        // POST: api/Financier (Accepting a list of Financier objects)
+            // Return the financiers list, even if empty
+            return Ok(financiers);
+        }
+        // POST: api/Financier (Modified to delete existing records and then insert new ones)
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<Financier> financiers)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            if (financiers == null || financiers.Count == 0)
+                return BadRequest("No financier data provided.");
+
+            // Get the Id_User from the first financier object
+            var idUser = financiers.First().Id_User;
+
+            // Ensure the user exists in the database
+            
+
+            // Delete all existing Financier records for the given Id_User
+            var existingFinanciers = await _context.Financiers.Where(f => f.Id_User == idUser).ToListAsync();
+            _context.Financiers.RemoveRange(existingFinanciers);
+
+            // Add the new Financier records to the database
             foreach (var financier in financiers)
             {
-                // Ensure the user exists in the database
-                var userExists = await _context.Users.AnyAsync(u => u.Id == financier.Id_User);
-                if (!userExists)
-                    return BadRequest($"The specified user (ID: {financier.Id_User}) does not exist.");
-
-                // Fetch the Utilisateur if needed (optional)
+                // Optional: Fetch the Utilisateur if needed
                 financier.Utilisateur = await _context.Users.FindAsync(financier.Id_User);
-
-                // Add each financier record to the database
                 _context.Financiers.Add(financier);
             }
 
+            // Save the changes to the database
             await _context.SaveChangesAsync();
 
             return Ok(financiers); // Return the list of created records
         }
+
 
         // Utility method to extract user ID from JWT token
         private int? GetUserIdFromToken(string authorization)

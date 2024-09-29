@@ -144,3 +144,4 @@ C:\Users\Ahmed soubai\source\repos\I2FCONSEIL\I2FCONSEIL\obj\Debug\net8.0\refint
 C:\Users\Ahmed soubai\source\repos\I2FCONSEIL\I2FCONSEIL\obj\Debug\net8.0\I2FCONSEIL.pdb
 C:\Users\Ahmed soubai\source\repos\I2FCONSEIL\I2FCONSEIL\obj\Debug\net8.0\I2FCONSEIL.genruntimeconfig.cache
 C:\Users\Ahmed soubai\source\repos\I2FCONSEIL\I2FCONSEIL\obj\Debug\net8.0\ref\I2FCONSEIL.dll
+C:\Users\Ahmed soubai\source\repos\I2FCONSEIL\I2FCONSEIL\obj\Debug\net8.0\I2FCONSEIL.sourcelink.json

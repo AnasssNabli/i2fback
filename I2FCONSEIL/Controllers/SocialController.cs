@@ -40,28 +40,45 @@ namespace I2FCONSEIL.Controllers
 
             return Ok(socials);
         }
+        // Modified to return an empty list if no records are found
+        [HttpGet("getsocial/{id}")]
+        public async Task<IActionResult> Getsocial(int id)
+        {
+            // Fetch the social records for the given user ID
+            var socials = await _context.Sociaux
+                .Where(s => s.Id_User == id)
+                .ToListAsync();
 
-        // POST: api/Social (Accepting a list of Social objects)
+            // Return the socials list, even if empty
+            return Ok(socials);
+        }
+
+        // POST: api/Social (Modified to delete existing records and then insert new ones)
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<Social> socials)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            if (socials == null || socials.Count == 0)
+                return BadRequest("No social data provided.");
+
+            // Get the Id_User from the first social object
+            var idUser = socials.First().Id_User;
+
+            // Delete all existing Social records for the given Id_User
+            var existingSocials = await _context.Sociaux.Where(s => s.Id_User == idUser).ToListAsync();
+            _context.Sociaux.RemoveRange(existingSocials);
+
+            // Add the new Social records to the database
             foreach (var social in socials)
             {
-                // Ensure the user exists in the database
-                var userExists = await _context.Users.AnyAsync(u => u.Id == social.Id_User);
-                if (!userExists)
-                    return BadRequest($"The specified user (ID: {social.Id_User}) does not exist.");
-
-                // Fetch the Utilisateur if needed (optional)
+                // Optional: Fetch the Utilisateur if needed
                 social.Utilisateur = await _context.Users.FindAsync(social.Id_User);
-
-                // Add each social record to the database
                 _context.Sociaux.Add(social);
             }
 
+            // Save the changes to the database
             await _context.SaveChangesAsync();
 
             return Ok(socials); // Return the list of created records

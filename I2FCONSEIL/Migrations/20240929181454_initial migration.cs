@@ -171,8 +171,8 @@ namespace I2FCONSEIL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Designation = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ExN = table.Column<float>(type: "real", nullable: false),
-                    ExN1 = table.Column<float>(type: "real", nullable: false),
+                    ExN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ExN1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Var = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_User = table.Column<int>(type: "int", nullable: false)
                 },
@@ -194,14 +194,14 @@ namespace I2FCONSEIL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Mois = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TvaN = table.Column<float>(type: "real", nullable: false),
-                    TvaN1 = table.Column<float>(type: "real", nullable: false),
+                    TvaN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TvaN1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TvaVAR = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IrN = table.Column<float>(type: "real", nullable: false),
-                    IrN1 = table.Column<float>(type: "real", nullable: false),
+                    IrN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IrN1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IrVAR = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsN = table.Column<float>(type: "real", nullable: false),
-                    IsN1 = table.Column<float>(type: "real", nullable: false),
+                    IsN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsN1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsVAR = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_User = table.Column<int>(type: "int", nullable: false)
                 },
@@ -223,11 +223,11 @@ namespace I2FCONSEIL.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Mois = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MasseN = table.Column<float>(type: "real", nullable: false),
-                    MasseN1 = table.Column<float>(type: "real", nullable: false),
+                    MasseN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MasseN1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MasseVAR = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CnssN = table.Column<float>(type: "real", nullable: false),
-                    CnssN1 = table.Column<float>(type: "real", nullable: false),
+                    CnssN = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CnssN1 = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CnssVAR = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Id_User = table.Column<int>(type: "int", nullable: false)
                 },

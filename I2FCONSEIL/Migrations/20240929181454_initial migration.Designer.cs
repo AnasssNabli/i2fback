@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace I2FCONSEIL.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240917165556_initial migration")]
+    [Migration("20240929181454_initial migration")]
     partial class initialmigration
     {
         /// <inheritdoc />
@@ -37,11 +37,13 @@ namespace I2FCONSEIL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("ExN")
-                        .HasColumnType("real");
+                    b.Property<string>("ExN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("ExN1")
-                        .HasColumnType("real");
+                    b.Property<string>("ExN1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Id_User")
                         .HasColumnType("int");
@@ -68,21 +70,25 @@ namespace I2FCONSEIL.Migrations
                     b.Property<int>("Id_User")
                         .HasColumnType("int");
 
-                    b.Property<float>("IrN")
-                        .HasColumnType("real");
+                    b.Property<string>("IrN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("IrN1")
-                        .HasColumnType("real");
+                    b.Property<string>("IrN1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IrVAR")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("IsN")
-                        .HasColumnType("real");
+                    b.Property<string>("IsN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("IsN1")
-                        .HasColumnType("real");
+                    b.Property<string>("IsN1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IsVAR")
                         .IsRequired()
@@ -92,11 +98,13 @@ namespace I2FCONSEIL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("TvaN")
-                        .HasColumnType("real");
+                    b.Property<string>("TvaN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("TvaN1")
-                        .HasColumnType("real");
+                    b.Property<string>("TvaN1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TvaVAR")
                         .IsRequired()
@@ -117,11 +125,13 @@ namespace I2FCONSEIL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<float>("CnssN")
-                        .HasColumnType("real");
+                    b.Property<string>("CnssN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("CnssN1")
-                        .HasColumnType("real");
+                    b.Property<string>("CnssN1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CnssVAR")
                         .IsRequired()
@@ -130,11 +140,13 @@ namespace I2FCONSEIL.Migrations
                     b.Property<int>("Id_User")
                         .HasColumnType("int");
 
-                    b.Property<float>("MasseN")
-                        .HasColumnType("real");
+                    b.Property<string>("MasseN")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("MasseN1")
-                        .HasColumnType("real");
+                    b.Property<string>("MasseN1")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MasseVAR")
                         .IsRequired()

@@ -10,8 +10,8 @@ namespace I2FCONSEIL.Models
         public int Id { get; set; }
 
         public string Designation { get; set; }
-        public float ExN { get; set; }
-        public float ExN1 { get; set; }
+        public string ExN { get; set; }
+        public string ExN1 { get; set; }
         public string Var { get; set; }
 
         [ForeignKey("Utilisateur")]

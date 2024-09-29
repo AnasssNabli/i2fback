@@ -10,11 +10,11 @@ namespace I2FCONSEIL.Models
         public int Id { get; set; }
 
         public string Mois { get; set; }
-        public float MasseN { get; set; }
-        public float MasseN1 { get; set; }
+        public string MasseN { get; set; }
+        public string MasseN1 { get; set; }
         public string MasseVAR { get; set; }
-        public float CnssN { get; set; }
-        public float CnssN1 { get; set; }
+        public string CnssN { get; set; }
+        public string CnssN1 { get; set; }
         public string CnssVAR { get; set; }
 
         [ForeignKey("Utilisateur")]

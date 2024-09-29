@@ -40,32 +40,50 @@ namespace I2FCONSEIL.Controllers
 
             return Ok(fiscals);
         }
+        [HttpGet("getfiscal/{id}")]
+        public async Task<IActionResult> GetFiscal(int id)
+        {
+            // Fetch the fiscal records for the given user ID
+            var fiscals = await _context.Fiscaux
+                .Where(f => f.Id_User == id)
+                .ToListAsync();
 
-        // POST: api/Fiscal (Modified to accept a list)
+            // Return the fiscals list, even if empty
+            return Ok(fiscals);
+        }
+        // POST: api/Fiscal (Modified to delete existing records and then insert new ones)
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<Fiscal> fiscals)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
+            if (fiscals == null || fiscals.Count == 0)
+                return BadRequest("No fiscal data provided.");
+
+            // Get the Id_User from the first fiscal object
+            var idUser = fiscals.First().Id_User;
+
+           
+
+            // Delete all existing Fiscal records for the given Id_User
+            var existingFiscals = await _context.Fiscaux.Where(f => f.Id_User == idUser).ToListAsync();
+            _context.Fiscaux.RemoveRange(existingFiscals);
+
+            // Add the new Fiscal records to the database
             foreach (var fiscal in fiscals)
             {
-                // Ensure the user exists in the database
-                var userExists = await _context.Users.AnyAsync(u => u.Id == fiscal.Id_User);
-                if (!userExists)
-                    return BadRequest($"The specified user (ID: {fiscal.Id_User}) does not exist.");
-
-                // Fetch the Utilisateur if needed (optional)
+                // Optional: Fetch the Utilisateur if needed
                 fiscal.Utilisateur = await _context.Users.FindAsync(fiscal.Id_User);
-
-                // Add the fiscal record to the database
                 _context.Fiscaux.Add(fiscal);
             }
 
+            // Save the changes to the database
             await _context.SaveChangesAsync();
 
             return Ok(fiscals); // Return the list of created records
         }
+
 
         // Utility method to extract user ID from JWT token
         private int? GetUserIdFromToken(string authorization)

@@ -10,14 +10,14 @@ namespace I2FCONSEIL.Models
         public int Id { get; set; }
 
         public string Mois { get; set; }
-        public float TvaN { get; set; }
-        public float TvaN1 { get; set; }
+        public string TvaN { get; set; }
+        public string TvaN1 { get; set; }
         public string TvaVAR { get; set; }
-        public float IrN { get; set; }
-        public float IrN1 { get; set; }
+        public string IrN { get; set; }
+        public string IrN1 { get; set; }
         public string IrVAR { get; set; }
-        public float IsN { get; set; }
-        public float IsN1 { get; set; }
+        public string IsN { get; set; }
+        public string IsN1 { get; set; }
         public string IsVAR { get; set; }
 
         [ForeignKey("Utilisateur")]
